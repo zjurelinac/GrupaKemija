@@ -1,0 +1,908 @@
+@import "reset.css";
+
+@accent: #e74b4a;
+@accentLi: #f55958;
+
+@bgLight: #ddd;
+@bgDark: #d0d0d0;
+@bgDarker: #bbb;
+
+@fg1: #222;
+@fg2: #333;
+@fg3: #444;
+@fg4: #555;
+@fg5: #777;
+@fg6: #999;
+
+@fgLi: #eee;
+@borderC: #c8c8c8;
+
+@bodyFont: "Roboto Slab";
+
+body{
+	background: @bgDark;
+	color: @fg1;
+	font-family: @bodyFont;
+	font-size: 16px;
+}
+
+h1{
+	font-size: 48px;
+	font-weight: bold;
+	line-height: 60px;
+}
+
+h2{
+	font-size: 32px;
+	line-height: 48px;
+}
+
+h3{
+	font-size: 24px;
+	line-height: 36px;
+}
+
+h4{
+	font-size: 20px;
+	line-height: 24px;
+}
+
+p{
+	line-height: 24px;
+	font-weight: 300;
+}
+
+b, strong{
+	font-weight: bold;
+}
+
+i, em{
+
+}
+
+a[ href ]{
+	color: @accent;
+	text-decoration: none;
+	
+	&:hover{
+		cursor: pointer;
+		text-decoration: underline;
+	}
+}
+
+input[ type = "text" ], input[ type = "password" ]{
+	background: @fgLi;
+	border: 1px solid #bbb;
+	font-size: 15px;
+	font-family: @bodyFont;
+	line-height: 1.25;
+	margin: 0;
+	padding: 6px;
+	width: 120px;
+	
+	&:focus{
+		outline: none;
+	}
+}
+
+button{
+	background: @accent;
+	border: none;
+	color: #fff;
+	display: block;
+	font-family: @bodyFont;
+	font-weight: bold;
+	line-height: 23px;
+	height: 35px;
+	margin: 0;
+	padding: 5px 12px;
+	padding-bottom: 7px;
+	
+	&:hover{
+		background: @accentLi;
+		cursor: pointer;
+	}
+	
+	&:focus{
+		outline: none;
+	}
+}
+
+/* Main elements */
+.header-wrapper{
+	background: @bgLight;
+	border-bottom: 1px solid @borderC;
+	color: @fg3;
+	overflow: hidden;
+	width: 100%;
+}
+
+header.main{
+	margin: 0 auto;
+	padding: 75px 0;
+	padding-top: 70px;
+	position: relative;
+	text-align: center;
+	width: 960px;
+	
+	h1{
+		margin-bottom: 24px;
+		text-shadow: 0 1px #f5f5f5;
+		
+		.small{
+			font-size: 32px;
+			font-weight: 400;
+		}
+		
+		a{
+			color: inherit;
+			
+			&:hover{
+				color: @accent;
+				text-decoration: none;
+			}
+		}
+	}
+	
+	h4{
+		color: #777;
+		font-weight: 300;
+		text-shadow: 0 1px @fgLi;
+	}
+	
+	#login-box{
+		overflow: hidden;
+		position: absolute;
+		right: 0;
+		top: 0;
+		
+		.login-link{
+			background: @accent;
+			clear: both;
+			color: @fgLi;
+			float: right;
+			font-weight: bold;
+			line-height: 24px;
+			padding: 6px 20px;
+			width: 60px;
+			
+			&:hover{
+				background: @accentLi;
+				cursor: pointer;
+			}
+		}
+		
+		form{
+			clear: both;
+			display: none;
+			
+			&> * {
+				display: block;
+				float: left;
+			}
+			
+			input[ type = "text" ], input[ type = "password" ]{
+				background: rgba( 255, 255, 255, 0.4 );
+				border: 1px solid #cfcfcf;
+				color: #999;
+				
+				&:focus{
+					background: rgba( 255, 255, 255, 0.5 );
+					border: 1px solid #cacaca;
+					color: #333;
+					font-weight: bold;
+					outline: none;
+				}
+				
+				&:first-child{
+					border-right: none;
+				}
+			}			
+		}
+		
+		.login-msg-box{
+			clear: both;
+			color: @fg6;
+			font-size: 14px;
+			font-weight: 300;
+			line-height: 24px;
+			padding-top: 6px;
+			text-align: center;
+		}
+	}
+	
+	#user-box{
+		background: @accent;
+		color: @fgLi;
+		float: right;
+		font-weight: bold;
+		line-height: 24px;
+		padding: 6px 20px;
+		padding-right: 12px;
+		
+		a{
+			color: @fgLi;
+			&:hover{
+				text-decoration: none;
+			}
+		}
+		
+		img{
+			display: block;
+			float: right;
+			margin-left: 12px;
+		}
+		
+		&:hover{
+			background: @accentLi;
+		}
+	}
+}
+
+.front-wrapper{
+	background: @accent;
+	border-bottom: 1px solid #aaa;
+	color: @fgLi;
+	display: none;
+	overflow: hidden;
+	
+	&.show{
+		display: block;
+	}
+}
+
+section.front{
+	margin: 0 auto;
+	padding: 24px 30px;
+	padding-top: 26px;
+	width: 900px;
+	
+	.system-msg{
+		font-size: 18px;
+		font-weight: 300;
+		line-height: 24px;
+		overflow: hidden;
+		
+		b{
+			margin-right: 4px;
+		}
+	}
+}
+
+section.articles{
+	margin: 75px auto;
+	width: 960px;
+	
+	article{
+		background: @bgLight;
+		box-shadow: 0 0 4px rgba( 0, 0, 0, 0.1 );
+		border-top: 4px solid @accent;
+		margin-bottom: 48px;
+		overflow: hidden;
+		padding: 48px 30px;
+		padding-top: 0;
+		
+		h2{
+			color: @fg3;
+			display: block;
+			font-weight: 300;
+			margin-bottom: 12px;
+			text-shadow: 0 1px #ddd;
+			
+			em{
+				background: @accent;
+				color: #fff;
+				display: none;
+				float: left;
+				font-size: 18px;
+				line-height: 24px;
+				margin-top: 4px;
+				margin-right: 18px;
+				padding: 10px 24px;
+				text-shadow: none;
+			}
+			
+			.date{
+				color: @fg4;
+				display: inline;
+				font-size: 17px;
+				margin-left: 12px;
+			}
+			
+		}
+		
+		.content{
+			float: right;
+			padding-right: 10px;
+			padding-top: 18px;
+			width: 660px;
+		
+			p{
+				color: @fg3;
+				font-size: 17px;
+				margin-bottom: 24px;
+				
+				&.note{
+					font-style: italic;
+					font-weight: 400;
+					margin: 0 30px;
+				}
+				
+				&.no-display{
+					display: none;
+				}
+			}
+			
+			h4{
+				color: @fg3;
+				font-weight: bold;
+				line-height: 48px;
+			}
+		}
+		
+		.side{
+			float: left;
+			text-align: center;
+			width: 200px;
+			
+			.img{
+				height: 200px;
+				margin-bottom: 12px;
+				width: 200px;
+				
+				img{
+					height: 96px;
+					padding: 52px;
+					width: 96px;
+				}
+			}
+			
+			.type{
+				color: @fg2;
+			}
+			
+			.date{	
+				color: @fg5;			
+				font-weight: 300;
+				line-height: 24px;
+			}
+			
+			.options{
+				line-height: 24px;
+				margin-top: 24px;
+				
+				.opt{
+					display: block;
+					
+					&.comment{
+						display: none;
+					}
+					
+					&.download{}
+					
+					&.view{}
+					
+					&.admin{
+						display: none;
+						
+						&:first-child{
+							margin-top: 24px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+article .side .img{
+	&.lecture{
+		background: @accent url( ../img/sym/literature-96.png ) no-repeat center center;
+	}
+	
+	&.problems{
+		background: @accent url( ../img/sym/math-96.png ) no-repeat center center;
+	}
+	
+	&.materials{
+		background: @accent url( ../img/sym/document-96.png ) no-repeat center center;
+	}
+	
+	&.links{
+		background: @accent url( ../img/sym/link-96.png ) no-repeat center center;
+	}
+	
+	&.group{
+		background: @accent url( ../img/sym/plasmid-96.png ) no-repeat center center;
+	}
+	
+	&.other{
+		background: @accent url( ../img/sym/chemistry-96.png ) no-repeat center center;
+	}
+}
+
+section.administrate{
+	margin: 75px auto;
+	width: 960px;
+	
+	.section-select{
+		margin-bottom: 70px;
+		overflow: hidden;
+		padding: 0 30px;
+		
+		h3{
+			a{
+				color: @fg2;
+				display: block;
+				float: left;
+				margin-right: 24px;
+				
+				&:hover{
+					color: @accent;
+					cursor: pointer;
+					text-decoration: none;
+				}
+				
+				&.active-select{
+					font-size: 28px;
+					font-weight: bold;
+				}
+				
+				&#logout{
+					float: right;
+					margin-right: 0;
+				}
+			}
+		}
+	}
+	
+	article.new-article{
+		background: @bgLight;
+		box-shadow: 0 0 4px rgba( 0, 0, 0, 0.1 );
+		border-top: 4px solid @accent;
+		margin-bottom: 48px;
+		overflow: hidden;
+		padding: 48px 30px;
+		padding-top: 0;
+		
+		.content{
+			float: right;
+			padding-right: 10px;
+			padding-top: 18px;
+			width: 660px;
+			
+			input#new-article-title{
+				background: none;
+				border: none;
+				clear: both;
+				display: block;		
+				font-size: 32px;
+				font-weight: 300;
+				margin-bottom: 12px;
+				width: 660px;
+			}
+			
+			textarea#new-article-content{
+				background: none;
+				border: none;
+				font-family: @bodyFont;
+				font-size: 16px;
+				font-weight: 300;
+				min-height: 300px; 
+				resize: none !important;
+				width: 660px;
+			}
+			
+			.attachments{
+				margin-bottom: 24px;
+				overflow: hidden;				
+				
+				h4{
+					font-weight: 300;
+					margin-bottom: 12px;
+				}
+				
+				.attachment-list{
+					
+					.attachment-item{
+						background: @bgDarker url( ../img/mime/file-26.png ) no-repeat 8px center;
+						float: left;
+						font-size: 15px;
+						font-weight: 300;
+						line-height: 24px;
+						margin-bottom: 12px;
+						margin-right: 12px;
+						overflow: hidden;
+						padding: 6px 12px;
+						padding-left: 36px;
+						text-align: left;
+						text-overflow: ellipsis;
+						
+						.attach-remove{
+							display: block;
+							float: right;
+							font-weight: 700;
+							line-height: 24px; 
+							margin-left: 8px;
+							padding-right: 1px;
+							
+							&:hover{
+								font-size: 18px;
+								padding: 0;
+							}
+						}
+						
+						&.pdf{
+							background-image: url( ../img/mime/pdf-26.png );
+						}
+						
+						&.doc, &.docx{
+							background-image: url( ../img/mime/word-26.png );
+						}
+						
+						&.xls, &.xlsx{
+							background-image: url( ../img/mime/excel-26.png );
+						}
+						
+						&:hover{
+							background-color: @accent;
+							color: @fgLi;
+							cursor: pointer;
+						}
+					}					
+				}
+				
+				.add-attachment{
+					background: @bgDarker;
+					float: left;
+					overflow: hidden;
+					padding: 6px;
+				
+					img{
+						display: block;
+						height: 24px;
+						width: 24px;
+					}
+					
+					&:hover{
+						background: @accent;
+						cursor: pointer;
+					}
+				}
+				
+				a.opt{
+					color: @fg2;
+					font-weight: bold;
+					
+					&:hover{
+						color: @accent;
+						cursor: pointer;
+					}
+				}
+			}
+			
+			.new-article-actions{
+				margin-top: 24px;
+				overflow: hidden;
+			
+				.new-article-submit-btn{
+					float: right;
+				}
+			}
+		}
+		
+		.side{
+			float: left;
+			text-align: center;
+			width: 200px;
+			
+			.img{
+				height: 200px;
+				margin-bottom: 12px;
+				width: 200px;							
+			}
+			
+			.type-select{
+				color: @fg2;
+				font-family: @bodyFont;
+				font-size: 24px;
+				margin-bottom: 4px;
+				text-align: center;
+				padding-left: 8px;
+				
+				option{
+					padding: 0 4px;
+					padding-right: 6px;
+				}
+			}
+			
+			.date{
+				color: @fg5;
+				font-weight: 300;
+				margin-bottom: 24px;
+			}
+			
+			a.side-opt{
+				color: @fg2;
+				font-weight: bold;
+					
+				&:hover{
+					color: @accent;
+					cursor: pointer;
+				}
+			}			
+		}
+	}
+	
+	.question{
+		background: @bgLight;
+		box-shadow: 0 0 4px rgba( 0, 0, 0, 0.1 );
+		border-top: 4px solid @accent;
+		margin-bottom: 48px;
+		overflow: hidden;
+		padding: 48px 30px;
+		padding-top: 0;
+		
+		.content{
+			float: right;
+			padding-right: 10px;
+			padding-top: 18px;
+			width: 660px;
+			
+			h2{
+				font-weight: 300;
+				margin-bottom: 12px;
+			}
+			
+			p{
+				color: @fg3;
+			}
+			
+			.question-actions{
+				margin-top: 24px;
+				overflow: hidden;
+				
+				button{
+					float: right;
+				}
+			}
+		}
+		
+		.side{
+			float: left;
+			text-align: center;
+			width: 200px;
+			
+			.img{
+				background: @accent url( ../img/sym/help-96.png ) no-repeat center center;
+				height: 200px;
+				margin-bottom: 12px;
+				width: 200px;
+			}
+			
+			.date{
+				color: @fg5;
+				font-weight: 300;
+			}
+			
+			.status{
+				color: @fg2;
+				font-size: 20px;
+				line-height: 24px;
+				margin-top: 24px;
+			}
+		}
+	}
+}
+
+.footer-wrapper{
+	background: @bgLight url( ../img/topbg.png ) center 70px no-repeat;
+	border-bottom: 1px solid @borderC;
+	border-top: 1px solid @borderC;
+	padding: 75px 0;
+	
+	footer.main{
+		margin: 0 auto;
+		overflow: hidden;
+		width: 900px;
+		
+		.col{
+			float: left;
+			margin-right: 30px;
+			width: 280px;
+			
+			&:last-child{
+				margin-right: 0;
+			}			
+		}
+		
+		.left{
+
+			&:before{
+				
+			}
+			
+			h3{
+				color: @fg2;
+				font-weight: bold;
+				text-shadow: 0 1px #f5f5f5;
+			}
+			
+			h4{
+				color: @fg2;
+				font-size: 18px;
+				font-weight: 300;
+				text-shadow: 0 1px @fgLi;
+				
+				.sub{
+					line-height: 36px;
+				}
+			}
+			
+			p.school{
+				color: @fg5;
+				font-size: 14px;
+				font-weight: 300;
+				text-shadow: 0 1px @fgLi;
+			}
+			
+			p.descr{
+				display: none;
+				margin-top: 24px;
+			}
+			
+			.contact-info{
+				margin-top: 48px;
+				text-align: left;
+				
+				h4{
+					color: @fg2;
+					font-size: 16px;
+					font-weight: 700;
+				}
+				
+				p{
+					color: @fg5;
+					font-size: 14px;
+				}
+				
+				p.email{
+					color: @accent;
+					font-family: Roboto;
+					font-weight: 400;
+					
+					&:hover{
+						cursor: pointer;
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+				
+		.right, .center{
+		
+			h4{
+				color: @fg2;
+				font-size: 16px;
+				font-weight: 700;
+				line-height: 24px;
+				margin-bottom: 12px;
+				margin-top: 12px;
+				text-shadow: 0 1px @fgLi;
+			}		
+		}
+		
+		label{
+			color: @fg5;
+			display: block;
+			line-height: 24px;
+			margin-bottom: 12px;
+			font-weight: 300;
+		}
+		
+		input[ type = "text" ]{
+			background: #eaeaea;
+			border: 1px solid #cacaca;
+			color: @fg3;
+			font-weight: 700;
+			margin-bottom: 24px;
+			width: 270px;
+		}
+		
+		textarea{
+			background: #eaeaea;
+			border: 1px solid #cacaca;
+			color: @fg3;
+			font-family: @bodyFont;
+			font-size: 15px;
+			font-weight: 700;
+			height: 110px;
+			line-height: 1.25;
+			padding: 4px;
+			resize: none;
+			width: 270px;
+		}
+		
+		button{
+			float: right;
+			margin-top: 12px;
+		}
+		
+		.right{
+			padding-top: 48px;
+		}
+	}
+}
+
+footer.sub{
+	color: @fg5;
+	font-weight: 300;
+	margin: 24px auto;
+	text-align: center;
+	width: 900px;
+}
+
+.popup-wrap{
+	background: rgba( 0, 0, 0, 0.2 );
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	
+	.popup{
+		background: @bgLight;
+		border-top: 4px solid @accent;
+		display: none;
+		min-height: 110px;
+		left: 50%;
+		margin-left: -260px;
+		margin-top: -85px;
+		overflow: hidden;
+		padding: 30px;
+		position: absolute;
+		top: 50%;
+		width: 460px;
+		
+		h3{
+			color: @fg2;
+			display: block;
+			font-weight: bold;
+			margin-top: -12px;
+			margin-bottom: 8px;
+			overflow: hidden;
+			position: relative;
+			
+			.popup-close{
+				display: block;
+				float: right;
+				margin-top: -3px;
+				
+				&:hover{
+					color: @accent;
+					cursor: pointer;
+				}
+			}
+		}
+		
+		p{
+			color: @fg5;
+			margin-bottom: 12px;
+		}
+		
+		input[ type = "text" ]{
+			font-weight: bold;
+			width: 448px;
+		}
+		
+		.popup-buttons{
+			margin-top: 12px;
+			overflow: hidden;
+			
+			.popup-ok{
+				float: right;
+			}
+		}
+	}
+}
