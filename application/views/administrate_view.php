@@ -83,17 +83,20 @@
 	</script>
 </head>
 <body>
+	<div class = "top-wrapper">
+		<div class = "top">
+			<a href = "/administrate">
+				<div id = "user-box">
+					<span class = "user-name"><?= $this->session->userdata( 'username' ) ?></span>
+					<img src = "./img/administrate-24.png" alt = " a "/>
+				</div>
+			</a>
+		</div>
+	</div>
 	<div class = "header-wrapper">
 		<header class = "main">
 			<h1><a href = "/">Grupa iz kemije <span class = "small">za 3. razrede</span></a></h1>
-			<h4>Predavanja, zadaci, materijali i korisni linkovi za pripremu za natjecanje iz kemije</h4>
-			<div id = "login-box">
-				<div id = "user-box">
-					<a href = "/administrate"><span class = "user-name"><?= $this->session->userdata( 'username' ) ?></span>
-					<img src = "./img/administrate-24.png"/></a>
-					<!--<a class = "logout-link" href = "/main/logout"><img src = "./img/logout-24.png" alt = "&rarr;"/></a>-->
-				</div>
-			</div>
+			<h4>Predavanja, zadaci, materijali i korisni linkovi za pripremu za natjecanje iz kemije</h4>			
 		</header>
 	</div>
 	<div class = "front-wrapper <? if( $this->session->flashdata( 'system_msg' ) ) echo 'show'; ?>">
@@ -157,7 +160,7 @@
 				<div class = "side">
 					<div class = "img"></div>
 					<div class = "date"><?= $row->date_asked?></div>
-					<div class = "status"><?= $row->status ?></div>
+					<!--<div class = "status"><?= $row->status ?></div>-->
 				</div>
 			</article>
 			<? endforeach; ?>

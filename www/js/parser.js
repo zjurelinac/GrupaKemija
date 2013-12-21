@@ -34,8 +34,8 @@ function parseArticle( x ){
 			
 				while( S.length ) 
 					parsed += S.pop();					
-				parsed += "<h3>";
-				S.push( "</h3>" );
+				parsed += "<h4>";
+				S.push( "</h4>" );
 				break;		
 						
 			} case '*':{	
@@ -134,7 +134,7 @@ function parseArticle( x ){
 							i += len + 4;			
 						}
 					}
-				} else if( S[ stackSize - 1 ] === "</h3>" ){			
+				} else if( S[ stackSize - 1 ] === "</h4>" ){			
 					while( S.length )
 						parsed += S.pop();				
 				} else if( S[ stackSize - 1 ] === "</ul>" ){

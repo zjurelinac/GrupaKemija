@@ -5,6 +5,8 @@
 					'materials' => 'Materijali', 
 					'other' => 'Ostalo',
 					'links' => 'Poveznice' );
+	if( isset( $attachments ) )
+		$attaches = explode( ";", $attachments );
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,10 +58,8 @@
 	</script>
 </head>
 <body>
-	<div class = "header-wrapper">
-		<header class = "main">
-			<h1>Grupa iz kemije <span class = "small">za 3. razrede</span></h1>
-			<h4>Predavanja, zadaci, materijali i korisni linkovi za pripremu za natjecanje iz kemije</h4>
+	<div class = "top-wrapper">
+		<div class = "top">
 			<div id = "login-box">
 				<?php if( !( $this->session->userdata( 'user_id' ) ) ): ?>
 				<div class = "login-link visible">Prijava</div>
@@ -69,15 +69,22 @@
 					<button type = "submit" value = "submit">Prijava</button>
 				</form>
 				<?php else: ?>
-					<div id = "user-box">
-						<a href = "/administrate"><span class = "user-name"><?= $this->session->userdata( 'username' ) ?></span>
-						<img src = "./img/administrate-24.png" alt = " a "/></a>
-						<!--<a class = "logout-link" href = "/main/logout"><img src = "./img/logout-24.png" alt = "&rarr;"/></a>-->
-					</div>
+					<a href = "/administrate">
+						<div id = "user-box">
+							<span class = "user-name"><?= $this->session->userdata( 'username' ) ?></span>
+							<img src = "./img/administrate-24.png" alt = " a "/>
+						</div>
+					</a>
 				<?php endif; ?>
 				<div class = "login-msg-box"><?php if( $this->session->flashdata( 'login_msg' ) ) 
 				echo $this->session->flashdata( 'login_msg' ); ?></div>
 			</div>
+		</div>
+	</div>
+	<div class = "header-wrapper">
+		<header class = "main">
+			<h1>Grupa iz kemije <span class = "small">za 3. razrede</span></h1>
+			<h4>Predavanja, zadaci, materijali i korisni linkovi za pripremu za natjecanje iz kemije</h4>			
 		</header>
 	</div>
 	<div class = "front-wrapper <? if( $this->session->flashdata( 'system_msg' ) ) echo 'show'; ?>">
@@ -91,6 +98,10 @@
 			<div class = "content">
 				<h2><?= $row->title ?></h2>				
 				<div class = "content-text" data-content = "<?= htmlspecialchars( $row->content, ENT_QUOTES ) ?>"><p class = "no-display"><?= $row->content ?></p></div>
+				<div class = "attachments">
+					<div class = "attachment-list">
+					</div>
+				</div>
 			</div>
 			<div class = "side">
 				<div class = "img <?= $row->type ?>">
@@ -98,11 +109,17 @@
 				<div class = "type"><h3><?= $types[ $row->type ] ?></h3></div>
 				<div class = "date"><?= $row->date_added ?></div>
 				<div class = "options">
-					<a class = "opt view">Pregled</a>
-					<a class = "opt comment">Komentari</a>
-					<a class = "opt print">Ispis</a>
-					<a class = "opt edit admin">Uredi</a>
-					<a class = "opt delete admin">Obriši</a>
+					<div class = "optgroup">
+						<a class = "opt view">Pregled</a>
+						<a class = "opt download">Preuzimanje</a>
+						<a class = "opt print">Ispis</a>
+					</div>
+					<?php if( $this->session->userdata( 'user_id' ) ):?>
+						<div class = "optgroup">
+							<a class = "opt edit admin">Uredi</a>
+							<a class = "opt delete admin">Obriši</a>
+						</div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</article>
