@@ -64,7 +64,10 @@
 				$( "#new-article-attachments" ).val( $( "#new-article-attachments" ).val() + ";" + attachLink );
 				var fileName = attachLink.slice( attachLink.lastIndexOf( "/" ) + 1 );
 				var fileExt = fileName.slice( fileName.lastIndexOf( "." ) + 1 );
-				$( '.attachment-list' ).append( "<div class = 'attachment-item " + fileExt + "'>" + fileName + "</div>" );
+				$( '.attachment-list' ).append( "<div class = 'attachment-item " + fileExt + "'>" + fileName + "<a class = 'attach-remove'>x</a></div>" );
+				$( '.attach-remove' ).filter( ':last' ).click( function(){
+					$( this ).parent().remove();
+				});
 			}
 			
 			$( '#add-attachment' ).click( function(){
@@ -85,10 +88,13 @@
 <body>
 	<div class = "top-wrapper">
 		<div class = "top">
+			<div class = "left-header">
+				<h4 id = "web-name">kemija.tk</h4>
+			</div>
 			<a href = "/administrate">
 				<div id = "user-box">
 					<span class = "user-name"><?= $this->session->userdata( 'username' ) ?></span>
-					<img src = "./img/administrate-24.png" alt = " a "/>
+					<img src = "./img/ui/administrate-24.png" alt = " a "/>
 				</div>
 			</a>
 		</div>
@@ -113,7 +119,7 @@
 				<a id = "users-select" href = "#users">Korisnici</a>
 				<a id = "logout" href = "/main/logout">Odjava</a></h3>
 		</div>
-		<article class = "new-article" id = "new-article">
+		<article class = "new-article article" id = "new-article">
 			<form method = "post" action = "/administrate/addArticle">		
 			<div class = "content">
 				<input type = "text" id = "new-article-title" name = "new-article-title" placeholder = "Naslov novog članka"/>
@@ -122,9 +128,9 @@
 					<h4>Privitci:</h4>
 					<input type = "hidden" id = "new-article-attachments" name = "new-article-attachments" value = ""/>
 					<div class = "attachment-list">
-						<div class = "attachment-item pdf attach01">PrepProblems13.pdf<a class = "attach-remove">x</a></div>
-						<div class = "attachment-item doc attach02">minerali.doc<a class = "attach-remove">x</a></div>
-						<div class = "attachment-item xls attach03">kinetikaRezultati.xls<a class = "attach-remove">x</a></div>
+						<!--<div class = "attachment-item pdf">PrepProblems13.pdf<a class = "attach-remove">x</a></div>
+						<div class = "attachment-item doc">minerali.doc<a class = "attach-remove">x</a></div>
+						<div class = "attachment-item xls">kinetikaRezultati.xls<a class = "attach-remove">x</a></div>-->
 					</div>
 					<div class = "add-attachment" id = "add-attachment"><img src = "./img/ui/plus2-26.png" alt = "Dodaj"/></div>
 					<!--<a class = "opt" id = "add-attachment">Dodaj privitak</a>-->
@@ -143,7 +149,7 @@
 					<option value = "group">Grupa</option>
 					<option value = "other">Ostalo</option>
 				</select>
-				<div class = "date">09. prosinac 2013.</div>
+				<div class = "date"><?= niceDate( date("Y-m-d H:i:s") ) ?></div>
 			</div>
 			</form>
 		</article>
@@ -159,7 +165,7 @@
 				</div>
 				<div class = "side">
 					<div class = "img"></div>
-					<div class = "date"><?= $row->date_asked?></div>
+					<div class = "date"><?= niceDate( $row->date_asked ) ?></div>
 					<!--<div class = "status"><?= $row->status ?></div>-->
 				</div>
 			</article>

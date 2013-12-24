@@ -18,12 +18,16 @@ class Article_model extends CI_Model{
 	
 	//	for displaying and/or editing individual articles
 	function getById( $id ){
-		return $this->db->from( 'articles' )->where( 'id', $id )->get();
+		return $this->db->from( 'articles' )->where( 'article_id', $id )->get();
 	}
 	
 	//	update existing article
 	function update( $id, $data ){
-		$this->db->from( 'articles' )->where( 'id', $id )->update( $data );
+		$this->db->from( 'articles' )->where( 'article_id', $id )->update( $data );
+	}
+	
+	function delete( $id ){
+		$this->db->from( 'articles' )->where( 'article_id', $id )->delete();
 	}
 	
 }

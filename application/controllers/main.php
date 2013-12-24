@@ -5,7 +5,6 @@ class Main extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		require_once APPPATH . '/resources/password.php';
-		$this->load->helper( 'url' );
 	}
 	
 	//	display
@@ -26,6 +25,22 @@ class Main extends CI_Controller{
 		$id = $this->question_model->insert( array( 'asker_name' => $name, 'asker_email' => $email, 'content' => $content ) );
 		$this->session->set_flashdata( 'system_msg', 'Pitanje uspješno poslano.' );
 		header( 'Location: http://' . site_url() );
+	}
+	
+	function delete( $id ){
+		if( !$this->session->userdata( 'user_id' ) ){
+			$this->session->set_flashdata( 'system_msg', 'Neovlašten pokušaj brisanja članka.' );
+			header( 'Location: http://' . site_url() );
+			return;
+		}
+		$this->article_model->delete( $id );
+		header( 'Location: http://' . site_url() );		
+	}
+	
+	function view( $id ){
+		$query = $this->article_model->getById( $id );
+		$res = $query->row( 0 );
+		$this->load->view( 'view_view', $res );
 	}
 	
 	//	user sign in

@@ -3,3 +3,9 @@
 [Wed Dec 18 22:08:52 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/delta/public_www/Kemija/application/controllers/administrate.php on line 19, referer: http://www.kemija.tmp/
 [Wed Dec 18 22:09:15 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/delta/public_www/Kemija/application/controllers/administrate.php on line 19, referer: http://www.kemija.tmp/
 [Sat Dec 21 17:14:14 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ')' in /home/delta/public_www/Kemija/application/views/main_view.php on line 102, referer: http://www.kemija.tmp/administrate
+[Sun Dec 22 17:47:43 2013] [error] [client 127.0.0.1] PHP Fatal error:  Function name must be a string in /home/delta/public_www/Kemija/application/views/main_view.php on line 128, referer: http://www.kemija.tmp/administrate
+[Sun Dec 22 21:08:36 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING, expecting '(' in /home/delta/public_www/Kemija/application/helpers/my_nicedate_helper.php on line 6
+[Sun Dec 22 21:08:42 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING, expecting '(' in /home/delta/public_www/Kemija/application/helpers/my_nicedate_helper.php on line 6
+[Sun Dec 22 21:09:39 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING, expecting '(' in /home/delta/public_www/Kemija/application/helpers/my_nicedate_helper.php on line 6
+[Sun Dec 22 21:10:01 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING, expecting '(' in /home/delta/public_www/Kemija/application/helpers/my_nicedate_helper.php on line 6
+[Mon Dec 23 11:41:36 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ';' in /home/delta/public_www/Kemija/application/controllers/main.php on line 43

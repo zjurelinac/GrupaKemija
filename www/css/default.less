@@ -3,10 +3,10 @@
 @accent: #e74b4a;
 @accentLi: #f55958;
 
-@bgLighter: #e5e5e5;
-@bgLight: #ddd;
-@bgDark: #d0d0d0;
-@bgDarker: #bfbfbf;
+@bgLighter: #f7f7f7;
+@bgLight: #fcfcfc;
+@bgDark: #eaeaea;
+@bgDarker: #eaeaea;
 
 @fg1: #222;
 @fg2: #333;
@@ -15,8 +15,8 @@
 @fg5: #777;
 @fg6: #999;
 
-@fgLi: #eee;
-@borderC: #c8c8c8;
+@fgLi: #f9f9f9;
+@borderC: #d5d5d5;
 
 @bodyFont: "Roboto Slab";
 
@@ -50,7 +50,7 @@ h4{
 
 p{
 	line-height: 24px;
-	font-weight: 300;
+	font-weight: 400;
 }
 
 b, strong{
@@ -73,7 +73,7 @@ a[ href ]{
 
 input[ type = "text" ], input[ type = "password" ]{
 	background: @fgLi;
-	border: 1px solid #bbb;
+	border: 1px solid #ddd;
 	font-size: 15px;
 	font-family: @bodyFont;
 	line-height: 1.25;
@@ -111,15 +111,30 @@ button{
 
 /* Main elements */
 .top-wrapper{
-	border-bottom: 1px solid @borderC;
-	height: 36px;
-	overflow: hidden;
+	/*border-bottom: 1px solid @borderC;*/
+	background: #333;
+	height: 35px;
 }
 
 .top{
 	margin: 0 auto;
 	position: relative;
 	width: 960px;
+
+	.left-header{
+		float: left;
+		overflow: hidden;
+		
+		h4#web-name{
+			color: #eee;
+			display: block;
+			font-size: 22px;
+			font-weight: bold;
+			line-height: 23px;
+			padding: 5px 0;
+			padding-bottom: 7px;
+		}
+	}
 
 	#login-box{
 		overflow: hidden;
@@ -133,7 +148,7 @@ button{
 			color: @fgLi;
 			float: right;
 			font-weight: bold;
-			line-height: 24px;
+			line-height: 23px;
 			padding: 6px 20px;
 			width: 60px;
 			
@@ -153,15 +168,13 @@ button{
 			}
 			
 			input[ type = "text" ], input[ type = "password" ]{
-				background: rgba( 255, 255, 255, 0.4 );
+				background: rgba( 255, 255, 255, 0.85 );
 				border: 1px solid #cfcfcf;
-				color: #999;
+				color: #333;
+				font-weight: bold;
 				
 				&:focus{
-					background: rgba( 255, 255, 255, 0.5 );
-					border: 1px solid #cacaca;
-					color: #333;
-					font-weight: bold;
+					background: rgba( 255, 255, 255, 0.9 );
 					outline: none;
 				}
 				
@@ -173,9 +186,9 @@ button{
 		
 		.login-msg-box{
 			clear: both;
-			color: @fg6;
+			color: #eee;
 			font-size: 14px;
-			font-weight: 300;
+			font-weight: 700;
 			line-height: 24px;
 			padding-top: 6px;
 			text-align: center;
@@ -187,12 +200,14 @@ button{
 		color: @fgLi;
 		float: right;
 		font-weight: bold;
-		line-height: 24px;
+		line-height: 23px;
+		height: 23px;
 		padding: 6px 20px;
 		padding-right: 12px;
 		
 		a{
 			color: @fgLi;
+			
 			&:hover{
 				text-decoration: none;
 			}
@@ -211,24 +226,25 @@ button{
 }
 
 .header-wrapper{
-	background: @bgLight;
-	border-bottom: 1px solid @borderC;
-	color: @fg3;
+	background: #333 url( ../img/wall5.jpg ) bottom center;
+	border-bottom: 8px solid #ccc;
+	color: #eee;
 	overflow: hidden;
 	width: 100%;
 }
 
 header.main{
 	margin: 0 auto;
-	padding: 100px 0;
-	padding-top: 95px;
+	padding: 125px 0;
+	padding-top: 120px;
 	position: relative;
 	text-align: center;
 	width: 960px;
 	
 	h1{
+		color: #eee;
 		margin-bottom: 24px;
-		text-shadow: 0 1px #f5f5f5;
+		text-shadow: 0 1px #111;
 		
 		.small{
 			font-size: 32px;
@@ -246,16 +262,16 @@ header.main{
 	}
 	
 	h4{
-		color: #777;
-		font-weight: 300;
-		text-shadow: 0 1px @fgLi;
+		color: #ddd;
+		font-weight: 700;
+		text-shadow: 0 1px #111;
 	}
 }
 
 .front-wrapper{
-	background: @accent;
-	border-bottom: 1px solid #aaa;
-	color: @fgLi;
+	background: #ddd;
+	border-bottom: 8px solid #ccc;
+	color: #555;
 	display: none;
 	overflow: hidden;
 	
@@ -282,167 +298,247 @@ section.front{
 	}
 }
 
-section.articles{
+section.articles, section.view-article{
 	margin: 75px auto;
 	width: 960px;
-	
-	article{
-		background: @bgLighter;
-		box-shadow: 0 0 4px rgba( 0, 0, 0, 0.1 );
-		border-top: 4px solid @accent;
-		margin-bottom: 48px;
-		overflow: hidden;
-		padding-top: 0;
-		
-		h2{
-			color: @fg3;
-			display: block;
-			font-weight: 300;
-			margin-bottom: 12px;
-			text-shadow: 0 1px #ddd;
-			
-			em{
-				background: @accent;
-				color: #fff;
-				display: none;
-				float: left;
-				font-size: 18px;
-				line-height: 24px;
-				margin-top: 4px;
-				margin-right: 18px;
-				padding: 10px 24px;
-				text-shadow: none;
-			}
-			
-			.date{
-				color: @fg4;
-				display: inline;
-				font-size: 17px;
-				margin-left: 12px;
-			}
-			
-		}
-		
-		.content{
-			background: @bgLight;
-			float: right;
-			padding-left: 30px;
-			padding-right: 30px;
-			padding-top: 18px;
-			padding-bottom: 48px;
-			width: 640px;
-		
-			p{
-				color: @fg3;
-				font-size: 17px;
-				margin-bottom: 24px;
-				
-				&.note{
-					font-style: italic;
-					font-weight: 400;
-					margin: 0 30px;
-				}
-				
-				&.no-display{
-					display: none;
-				}
-			}
-			
-			h4{
-				color: @fg3;
-				font-weight: bold;
-				line-height: 48px;
-			}
-		}
-		
-		.side{
-			float: left;
-			padding: 0 30px;
-			text-align: center;
-			width: 200px;
-			
-			.img{
-				height: 200px;
-				margin-bottom: 12px;
-				width: 200px;
-				
-				img{
-					height: 96px;
-					padding: 52px;
-					width: 96px;
-				}
-			}
-			
-			.type{
-				color: @fg2;
-			}
-			
-			.date{	
-				color: @fg5;			
-				font-weight: 300;
-				line-height: 24px;
-			}
-			
-			.options{
-				line-height: 24px;
-				margin-top: 24px;
-				
-				.optgroup{
-					/*margin-bottom: 24px;
-					overflow: hidden;*/
-				}
-				
-				.opt{
-					color: @fg4;
-					display: inline;
-					font-weight: bold;
-					margin-right: 6px;
-					
-					&:hover{
-						color: @accent;
-						cursor: pointer;
-						font-weight: bold;
-					}
-					
-					&.comment{
-						display: none;
-					}
-					
-					&.download{}
-					
-					&.view{}
-					
-					&.admin{
-					}
-				}
-			}
-		}
-	}
 }
 
-article .side .img{
-	&.lecture{
-		background: @accent url( ../img/sym/literature-96.png ) no-repeat center center;
+
+article.article{
+	background: @bgLighter;
+	border-bottom: 8px solid #ddd;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	margin-bottom: 48px;
+	overflow: hidden;
+	padding-top: 0;
+	
+	h2{
+		color: #5f5f5f;
+		display: block;
+		font-weight: 700;
+		margin-bottom: 12px;
+		text-shadow: 0 1px #fff;
+		
+		em{
+			background: @accent;
+			color: #fff;
+			display: none;
+			float: left;
+			font-size: 18px;
+			line-height: 24px;
+			margin-top: 4px;
+			margin-right: 18px;
+			padding: 10px 24px;
+			text-shadow: none;
+		}
+		
+		.date{
+			color: @fg4;
+			display: inline;
+			font-size: 17px;
+			margin-left: 12px;
+		}
+		
 	}
 	
-	&.problems{
-		background: @accent url( ../img/sym/math-96.png ) no-repeat center center;
+	.content{
+		background: @bgLight;
+		float: right;
+		padding: 24px 30px;
+		padding-bottom: 48px;
+		width: 640px;
+	
+		.content-text{
+			min-height: 300px;
+			margin-bottom: 24px;
+		}
+	
+		p{
+			color: @fg3;
+			margin-bottom: 24px;
+			
+			&.note{
+				font-style: italic;
+				font-weight: 400;
+				margin: 0 30px;
+			}
+			
+			&.no-display{
+				display: none;
+			}
+		}
+		
+		.img-wrap{
+			margin-bottom: 24px;
+			overflow: hidden;
+			padding-top: 8px;
+			text-align: center;
+			
+			img{
+				max-width: 100%;
+				margin-bottom: 8px;
+			}
+			
+			.caption{
+				color: #444;
+				font-weight: 700;
+				line-height: 24px;
+				padding: 4px 0;
+			}
+			
+		}
+		
+		ul{
+			display: block;
+			overflow: hidden;
+			
+			li{
+				margin-bottom: 12px;
+				list-style: disc inside;
+			}
+		}
+		
+		h4{
+			color: @fg3;
+			font-weight: bold;
+			line-height: 48px;
+		}
+		
+		.attachments{
+			.attachment-list{
+				overflow: hidden;
+				
+				.attachment-item{
+					background: @bgDarker url( ../img/mime/link-26.png ) no-repeat 8px 7px;
+					border: 1px solid #d3d3d3;
+					color: #555;
+					float: left;
+					font-size: 15px;
+					font-weight: 700;
+					line-height: 24px;
+					margin-bottom: 12px;
+					margin-right: 12px;
+					overflow: hidden;
+					padding: 6px 12px;
+					padding-left: 36px;
+					text-align: left;
+					text-overflow: ellipsis;
+					
+					/*&.pdf{
+						background-image: url( ../img/mime/pdf-26.png );
+					}
+					
+					&.doc, &.docx{
+						background-image: url( ../img/mime/word-26.png );
+					}
+					
+					&.xls, &.xlsx{
+						background-image: url( ../img/mime/excel-26.png );
+					}
+					
+					&.ppt, &.pptx{
+						background-image: url( ../img/mime/powerpoint-26.png );
+					}
+					
+					&.jpg{
+						background-image: url( ../img/mime/jpg-26.png );
+					}
+					
+					&.png{
+						background-image: url( ../img/mime/png-26.png );
+					}*/
+					
+					&:hover{
+						cursor: pointer;
+						border-bottom: 4px solid @accent;
+						padding-bottom: 3px;
+					}
+				}
+			}
+		}
 	}
 	
-	&.materials{
-		background: @accent url( ../img/sym/document-96.png ) no-repeat center center;
-	}
+	.side{
+		float: left;
+		padding: 0 30px;
+		padding-top: 30px;
+		text-align: center;
+		width: 200px;
+		
+		.img{
+			height: 200px;
+			margin-bottom: 12px;
+			width: 200px;		
+			
+			&.lecture{
+				background: @accent url( ../img/sym/literature-96.png ) no-repeat center center;
+			}
 	
-	&.links{
-		background: @accent url( ../img/sym/link-96.png ) no-repeat center center;
-	}
+			&.problems{
+				background: @accent url( ../img/sym/math-96.png ) no-repeat center center;
+			}
 	
-	&.group{
-		background: @accent url( ../img/sym/plasmid-96.png ) no-repeat center center;
-	}
+			&.materials{
+				background: @accent url( ../img/sym/document-96.png ) no-repeat center center;
+			}
 	
-	&.other{
-		background: @accent url( ../img/sym/chemistry-96.png ) no-repeat center center;
+			&.links{
+				background: @accent url( ../img/sym/link-96.png ) no-repeat center center;
+			}
+	
+			&.group{
+				background: @accent url( ../img/sym/plasmid-96.png ) no-repeat center center;
+			}
+	
+			&.other{
+				background: @accent url( ../img/sym/chemistry-96.png ) no-repeat center center;
+			}
+		}
+		
+		.type{
+			color: @fg2;
+		}
+		
+		.date{	
+			color: @fg5;			
+			font-weight: 300;
+			line-height: 24px;
+		}
+		
+		.options{
+			line-height: 24px;
+			margin-top: 24px;
+			
+			.optgroup{
+				/*margin-bottom: 24px;
+				overflow: hidden;*/
+			}
+			
+			.opt{
+				color: @fg4;
+				display: inline;
+				font-weight: bold;
+				margin-right: 6px;
+				
+				&:hover{
+					color: @accent;
+					cursor: pointer;
+					font-weight: bold;
+				}
+				
+				&.comment{
+					display: none;
+				}
+				
+				&.download{}
+				
+				&.view{}
+				
+				&.admin{
+				}
+			}
+		}
 	}
 }
 
@@ -483,8 +579,9 @@ section.administrate{
 	
 	article.new-article{
 		background: @bgLighter;
-		box-shadow: 0 0 4px rgba( 0, 0, 0, 0.1 );
-		border-top: 4px solid @accent;
+		border-bottom: 8px solid #ddd;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
 		margin-bottom: 48px;
 		overflow: hidden;
 		padding-top: 0;
@@ -495,17 +592,19 @@ section.administrate{
 			padding-left: 30px;
 			padding-right: 30px;
 			padding-top: 18px;
-			padding-bottom: 48px;
+			padding-bottom: 30px;
 			width: 640px;
 			
 			input#new-article-title{
 				background: none;
 				border: none;
 				clear: both;
+				color: #5f5f5f;
 				display: block;		
 				font-size: 32px;
-				font-weight: 300;
+				font-weight: 700;
 				margin-bottom: 12px;
+				padding: 6px 0;
 				width: 660px;
 			}
 			
@@ -514,10 +613,10 @@ section.administrate{
 				border: none;
 				font-family: @bodyFont;
 				font-size: 16px;
-				font-weight: 300;
+				font-weight: 400;
 				min-height: 300px; 
 				resize: none !important;
-				width: 660px;
+				width: 640px;
 			}
 			
 			.attachments{
@@ -525,41 +624,49 @@ section.administrate{
 				overflow: hidden;				
 				
 				h4{
-					font-weight: 300;
-					margin-bottom: 12px;
+					border-bottom: 1px solid #ddd;
+					color: #555;
+					font-weight: 700;
+					margin-bottom: 8px;
+					padding-bottom: 4px;
 				}
 				
 				.attachment-list{
 					
 					.attachment-item{
-						background: @bgDarker url( ../img/mime/file-26.png ) no-repeat 8px center;
+						background: @bgDarker url( ../img/mime/link-26.png ) no-repeat 8px 7px;
+						border: 1px solid #d3d3d3;
+						color: #555;
 						float: left;
 						font-size: 15px;
-						font-weight: 300;
+						font-weight: 700;
 						line-height: 24px;
 						margin-bottom: 12px;
 						margin-right: 12px;
 						overflow: hidden;
-						padding: 6px 12px;
+						padding: 6px 6px;
 						padding-left: 36px;
+						padding-right: 0;
 						text-align: left;
 						text-overflow: ellipsis;
 						
 						.attach-remove{
+							background: #cfcfcf;
+							color: #333;
 							display: block;
 							float: right;
 							font-weight: 700;
-							line-height: 24px; 
-							margin-left: 8px;
-							padding-right: 1px;
+							line-height: 24px;
+							margin: -6px 0; 
+							margin-left: 24px;
+							padding: 6px 8px;
 							
 							&:hover{
-								font-size: 18px;
-								padding: 0;
+								color: @accent;
 							}
 						}
 						
-						&.pdf{
+						/*&.pdf{
 							background-image: url( ../img/mime/pdf-26.png );
 						}
 						
@@ -575,12 +682,19 @@ section.administrate{
 							background-color: @accent;
 							color: @fgLi;
 							cursor: pointer;
+						}*/
+						
+						&:hover{
+							cursor: pointer;
+							border-bottom: 4px solid @accent;
+							padding-bottom: 3px;
 						}
 					}					
 				}
 				
 				.add-attachment{
 					background: @bgDarker;
+					border: 1px solid #d3d3d3;
 					float: left;
 					overflow: hidden;
 					padding: 6px;
@@ -592,8 +706,9 @@ section.administrate{
 					}
 					
 					&:hover{
-						background: @accent;
 						cursor: pointer;
+						border-bottom: 4px solid @accent;
+						padding-bottom: 3px;
 					}
 				}
 				
@@ -621,6 +736,7 @@ section.administrate{
 		.side{
 			float: left;
 			padding: 0 30px;
+			padding-top: 30px;
 			text-align: center;
 			width: 200px;
 			
@@ -730,7 +846,7 @@ section.administrate{
 }
 
 .footer-wrapper{
-	background: @bgLight url( ../img/topbg.png ) center 70px no-repeat;
+	background: #e0e0e0;
 	border-bottom: 1px solid @borderC;
 	border-top: 1px solid @borderC;
 	padding: 75px 0;
@@ -751,22 +867,18 @@ section.administrate{
 		}
 		
 		.left{
-
-			&:before{
-				
-			}
 			
 			h3{
 				color: @fg2;
 				font-weight: bold;
-				text-shadow: 0 1px #f5f5f5;
+				text-shadow: 0 1px #fdfdfd;
 			}
 			
 			h4{
 				color: @fg2;
 				font-size: 18px;
 				font-weight: 300;
-				text-shadow: 0 1px @fgLi;
+				text-shadow: 0 1px #fafafa;
 				
 				.sub{
 					line-height: 36px;
@@ -777,7 +889,7 @@ section.administrate{
 				color: @fg5;
 				font-size: 14px;
 				font-weight: 300;
-				text-shadow: 0 1px @fgLi;
+				text-shadow: 0 1px #fafafa;
 			}
 			
 			p.descr{
@@ -802,7 +914,6 @@ section.administrate{
 				
 				p.email{
 					color: @accent;
-					font-family: Roboto;
 					font-weight: 400;
 					
 					&:hover{
@@ -822,7 +933,7 @@ section.administrate{
 				line-height: 24px;
 				margin-bottom: 12px;
 				margin-top: 12px;
-				text-shadow: 0 1px @fgLi;
+				text-shadow: 0 1px #fafafa;
 			}		
 		}
 		
@@ -835,8 +946,8 @@ section.administrate{
 		}
 		
 		input[ type = "text" ]{
-			background: #eaeaea;
-			border: 1px solid #cacaca;
+			background: #f3f3f3;
+			border: 1px solid #d5d5d5;
 			color: @fg3;
 			font-weight: 700;
 			margin-bottom: 24px;
@@ -844,13 +955,13 @@ section.administrate{
 		}
 		
 		textarea{
-			background: #eaeaea;
-			border: 1px solid #cacaca;
+			background: #f3f3f3;
+			border: 1px solid #d5d5d5;
 			color: @fg3;
 			font-family: @bodyFont;
 			font-size: 15px;
 			font-weight: 700;
-			height: 110px;
+			height: 118px;
 			line-height: 1.25;
 			padding: 4px;
 			resize: none;
@@ -887,7 +998,7 @@ footer.sub{
 	
 	.popup{
 		background: @bgLight;
-		border-top: 4px solid @accent;
+		border-bottom: 8px solid #999;
 		display: none;
 		min-height: 110px;
 		left: 50%;

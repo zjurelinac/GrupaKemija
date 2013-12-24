@@ -29,6 +29,11 @@ class Administrate extends CI_Controller{
 		header( 'Location: http://' . site_url( '/administrate' ) );
 	}
 	
+	function editArticle( $id ){
+		$query = $this->article_model->getById( $id );
+		$res = $query->result();
+	}
+	
 	//	answer questions form processor
 	function answer(){
 		

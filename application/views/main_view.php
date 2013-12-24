@@ -5,8 +5,6 @@
 					'materials' => 'Materijali', 
 					'other' => 'Ostalo',
 					'links' => 'Poveznice' );
-	if( isset( $attachments ) )
-		$attaches = explode( ";", $attachments );
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,6 +58,9 @@
 <body>
 	<div class = "top-wrapper">
 		<div class = "top">
+			<div class = "left-header">
+				<h4 id = "web-name">kemija.tk</h4>
+			</div>
 			<div id = "login-box">
 				<?php if( !( $this->session->userdata( 'user_id' ) ) ): ?>
 				<div class = "login-link visible">Prijava</div>
@@ -72,7 +73,7 @@
 					<a href = "/administrate">
 						<div id = "user-box">
 							<span class = "user-name"><?= $this->session->userdata( 'username' ) ?></span>
-							<img src = "./img/administrate-24.png" alt = " a "/>
+							<img src = "./img/ui/administrate-24.png" alt = " a "/>
 						</div>
 					</a>
 				<?php endif; ?>
@@ -94,12 +95,21 @@
 	</div>
 	<section class = "articles">
 		<?php foreach( $articles as $row ): ?>
-		<article class = "article-<?= $row->type ?>">
+		<?php 
+			$attaches = explode( ";", $row->attachments );
+		?>
+		<article class = "article article-<?= $row->type ?>" id = "article-<?= $row->article_id ?>">
 			<div class = "content">
-				<h2><?= $row->title ?></h2>				
+				<h2><a href = "main/view/<?= $row->article_id ?>"><?= $row->title ?></a></h2>
 				<div class = "content-text" data-content = "<?= htmlspecialchars( $row->content, ENT_QUOTES ) ?>"><p class = "no-display"><?= $row->content ?></p></div>
 				<div class = "attachments">
 					<div class = "attachment-list">
+						<?php foreach( $attaches as $attach ):?>
+							<?php if( !empty( $attach ) ):?>
+								<?php $lastpart = strrchr( $attach, "/" );?>
+								<div class = "attachment-item <?= substr( strrchr( $lastpart, '.' ), 1 ) ?>"><?= substr( $lastpart, 1 ) ?></div>
+							<?php endif; ?>
+						<?php endforeach; ?>
 					</div>
 				</div>
 			</div>
@@ -107,17 +117,17 @@
 				<div class = "img <?= $row->type ?>">
 				</div>
 				<div class = "type"><h3><?= $types[ $row->type ] ?></h3></div>
-				<div class = "date"><?= $row->date_added ?></div>
+				<div class = "date"><?= niceDate( $row->date_added )?></div>
 				<div class = "options">
 					<div class = "optgroup">
-						<a class = "opt view">Pregled</a>
+						<!--<a class = "opt view">Pregled</a>-->
 						<a class = "opt download">Preuzimanje</a>
 						<a class = "opt print">Ispis</a>
 					</div>
 					<?php if( $this->session->userdata( 'user_id' ) ):?>
 						<div class = "optgroup">
 							<a class = "opt edit admin">Uredi</a>
-							<a class = "opt delete admin">Obriši</a>
+							<a class = "opt delete admin" href = "<?= 'http://' . site_url( '/main/delete/' . $row->article_id ) ?>">Obriši</a>
 						</div>
 					<?php endif; ?>
 				</div>
